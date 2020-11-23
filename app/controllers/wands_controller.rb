@@ -1,8 +1,10 @@
 class WandsController < ApplicationController
   def home
+    @wands = Wand.all
   end
 
   def index
+    @wands = Wand.all
   end
 
   def new

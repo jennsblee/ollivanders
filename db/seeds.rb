@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+@wands = {{
+  name: 'voldemort',
+  length: 10,
+  wood: 'holly',
+  core: 'unicorn',
+  price: 45
+}, {
+  name:
+  length:
+  wood:
+  core:
+  price:
+}
+}
