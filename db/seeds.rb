@@ -22,8 +22,8 @@ Wand.destroy_all
 
     5.times do
       wand_attributes = {
-        wood: Faker::Construction.material,
-        core: Faker::Construction.material,
+        wood: Wand::WOOD_TYPES.sample,
+        core: Wand::CORE_TYPES.sample,
         size: rand(1..12),
         price: rand(25..100),
         description: Faker::Movies::HarryPotter.quote,
