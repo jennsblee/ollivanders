@@ -53,10 +53,4 @@ class WandsController < ApplicationController
   def wand_params
     params.require(:wand).permit(:name, :wood, :core, :price, :size, :description)
   end
-
-  private
-
-  def wand_params
-    params.require(:wand).permit(:name, :description, :wood, :core, :price, :size)
-  end
 end

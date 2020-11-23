@@ -1,0 +1,11 @@
+<h1><%= @wand.name %></h1>
+<h3><%= @wand.description %></h3>
+
+<h5>wood: <%= @wand.wood %></h5>
+<h5>core: <%= @wand.core %></h5>
+<h5>size: <%= @wand.size %> cm</h5>
+<h5>price: $ <%= @wand.price %></h5>
+
+<% if current_user == @wand.user %>
+  <%= link_to 'edit', edit_wand_path(@wand) %>
+<% end %>
