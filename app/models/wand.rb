@@ -1,6 +1,6 @@
 class Wand < ApplicationRecord
   belongs_to :user
-  has_many :bookings, dependent: :destory
+  has_many :bookings, dependent: :destroy
 
   validates :wood, presence: true, uniqueness: { scope: :core }
   validates :price, presence: true

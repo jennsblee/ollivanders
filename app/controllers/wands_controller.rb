@@ -3,6 +3,7 @@ class WandsController < ApplicationController
   before_action :set_wand, only: [:show, :edit, :update, :destroy]
 
   def index
+    @wands = Wand.all
   end
 
   def new
@@ -11,6 +12,7 @@ class WandsController < ApplicationController
 
   def create
     @wand = Wand.new(wand_params)
+    @wand.user = current_user
 
     if @wand.save
       redirect_to wand_path(@wand)
