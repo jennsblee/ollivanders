@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_23_032937) do
+ActiveRecord::Schema.define(version: 2020_11_23_034559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "wand_id", null: false
+    t.date "check_out"
+    t.date "check_in"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+    t.index ["wand_id"], name: "index_bookings_on_wand_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +38,20 @@ ActiveRecord::Schema.define(version: 2020_11_23_032937) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wands", force: :cascade do |t|
+    t.string "wood"
+    t.string "core"
+    t.integer "price"
+    t.integer "size"
+    t.integer "strength"
+    t.bigint "user_id", null: false
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_wands_on_user_id"
+  end
+
+  add_foreign_key "bookings", "users"
+  add_foreign_key "bookings", "wands"
+  add_foreign_key "wands", "users"
 end
