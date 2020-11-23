@@ -1,8 +1,6 @@
 class WandsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_wand, only: [:show, :edit, :update, :destroy]
-
-  def home
-  end
 
   def index
   end
