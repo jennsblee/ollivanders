@@ -1,0 +1,17 @@
+<h1>Welcome, <%= @user.first_name %></h1>
+
+<% if @wands %>
+  <ul>
+    <% @wands.each do |wand| %>
+      <li><%= wand.name %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @bookings %>
+  <ul>
+    <% @bookings.each do |booking| %>
+      <li><%= booking.check_in %> - <%= booking.check_out %></li>
+    <% end %>
+  </ul>
+<% end %>
