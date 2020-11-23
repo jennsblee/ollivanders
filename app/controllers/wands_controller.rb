@@ -30,8 +30,6 @@ class WandsController < ApplicationController
   end
 
   def destroy
-    @wand = Wand.find(params[:id])
-    @user = @wand.user
     @wand.destroy
 
     #eventually we would want to redirect to the users(wands page) where they can see all their wands,
