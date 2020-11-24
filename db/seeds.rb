@@ -31,7 +31,7 @@ wand_attributes = {
 }
 wand = Wand.new(wand_attributes)
 wand.photos.attach(io: file, filename: 'elderwand.png', content_type: 'image/jpg')
-wand.save
+
 
 puts "Created #{user.first_name} #{user.last_name} with wand #{wand.name}"
 
