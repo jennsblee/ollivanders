@@ -136,7 +136,7 @@ file7 = URI.open('https://res.cloudinary.com/dsspgcaou/image/upload/v1606189188/
 file8 = URI.open('https://res.cloudinary.com/dsspgcaou/image/upload/v1606189543/ybnaxerta8kdv8y4wf4w.jpg')
 wand_attributes7 = {
   wood: "Yew",
-  core: "Phoenix Feather",
+  core: "Pheonix Feather",
   size: 18,
   price: 45,
   description: "This wand is \"brother\" to Harry Potter's wand — the core tail feathers are both from Fawkes.",
@@ -149,4 +149,3 @@ wand7.photos.attach(io: file8, filename: 'tomriddle2.png', content_type: 'image/
 wand7.save
 
 puts "Created #{user3.first_name} #{user3.last_name} with wand #{wand7.name}"
-
