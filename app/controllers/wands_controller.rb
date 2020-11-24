@@ -4,7 +4,7 @@ class WandsController < ApplicationController
   after_action :authorize_wand, except: :index
 
   def index
-    # @wands = Wand.all
+    # @wands = Wand.all.order(created_at: :desc)
     @wands = policy_scope(Wand).order(created_at: :desc)
   end
 
@@ -25,7 +25,9 @@ class WandsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+
+  end
 
   def edit; end
 

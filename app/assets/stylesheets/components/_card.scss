@@ -1,0 +1,31 @@
+.card {
+  background-image: url(https://image.freepik.com/free-vector/abstract-floral-frame-vintage-background-vector_1055-9139.jpg);
+  background-size: contain;
+  background-position: center;
+  box-shadow: 0 0 5px;
+  height: 210px;
+  border-radius: 5px;
+}
+
+.card-body {
+  text-align: center;
+  text-shadow: 0px 0px 2px;
+}
+
+.card-title a {
+  background-color: #EAD6B3;
+  color: #4a3f35;
+  line-height: 100px;
+  font-size: 30px;
+  &:hover {
+    text-decoration: none;
+    font-weight: bold;
+  }
+}
+
+.card-link {
+  color: #707070;
+  &:hover {
+    color: #646464;
+  }
+}
