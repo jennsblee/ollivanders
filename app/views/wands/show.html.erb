@@ -1,9 +1,22 @@
 <div class="container pad20">
-<div class="text-center">
-  <% @wand.photos.each do |photo| %>
-   <%= cl_image_tag(photo.key, height: 300, width: 400, crop: :fill) %>
-  <% end %>
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <% @wand.photos.each do |photo| %>
+      <div class="carousel-item active images">
+        <%= cl_image_tag(photo.key, class: "d-block w-50 images") %>
+      </div>
+    <% end %>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>
+
 
   <h1><%= @wand.name %></h1>
   <h3><%= @wand.description %></h3>
@@ -22,8 +35,4 @@
   <% if policy(Booking).new? %>
     <%= link_to 'book', new_wand_booking_path(@wand) %>
   <% end %>
-
 </div>
-
-
-
