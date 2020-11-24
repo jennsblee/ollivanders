@@ -1,7 +1,7 @@
 <div class="container">
   <ul>
     <% @wands.each do |wand| %>
-    <li><%= wand.name.capitalize %></li>
+    <li><%= link_to wand.name.capitalize, wand_path(wand) %></li>
     <% end %>
   </ul>
 </div>
