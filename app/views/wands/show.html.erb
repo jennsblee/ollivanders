@@ -6,9 +6,15 @@
 <h5>size: <%= @wand.size %> cm</h5>
 <h5>price: $ <%= @wand.price %></h5>
 
-<% if current_user == @wand.user %>
-  <%= link_to 'edit', edit_wand_path(@wand) %>
+<% if policy(@wand).edit? %>
+  <%= link_to edit_wand_path(@wand) do %><i class="fas fa-pencil-alt"></i><% end %>
   <%= link_to 'delete', wand_path, method: :delete, data: { confirm: "Are you sure?" } %>
 <% end %>
 
-<%= link_to 'book', new_wand_booking_path(@wand) %>
+<% if policy(Booking).new? %>
+  <%= link_to 'book', new_wand_booking_path(@wand) %>
+<% end %>
+
+<%# @wand.photos.each do |photo| %>
+  <%#= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+<%# end %>

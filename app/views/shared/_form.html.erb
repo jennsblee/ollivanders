@@ -5,5 +5,6 @@
   <%= w.input :core, collection: Wand::CORE_TYPES %>
   <%= w.input :price %>
   <%= w.input :size %>
+  <%= w.input :photos, as: :file, input_html: { multiple: true } %>
   <%= w.button :submit %>
 <% end %>
