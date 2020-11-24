@@ -11,8 +11,9 @@ class WandsController < ApplicationController
         lat: wand.latitude,
         lng: wand.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { wand: wand }),
-        image_url: helpers.asset_url('cat.png')
+        image_url: helpers.asset_url('wand2.png')
       }
+    end
   end
 
   def new
