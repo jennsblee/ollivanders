@@ -8,9 +8,9 @@
         <%#= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
         <%= w.input :check_in %>
         <%= w.input :check_out %>
-        <%#= w.input :check_out, as: :date, wrapper: :date, input_html: {value: I18n.l(w.object.date)} %>
-        <%#= w.input :check_in, as: :string, wrapper: :date, input_html: {value: I18n.l(w.object.date)} %>
-        <%= w.button :submit, class: 'bookings-button'%>
+        <%= w.input :check_out, as: :string, required: false, input_html: {class: "datepicker"} %>
+        <%= w.input :check_in, as: :string, required: false, input_html: {class: "datepicker"}
+        <%= w.button :submit, class: 'bookings-button', id: "sweet-alert-demo"%>
       <% end %>
       </form>
     </div>
