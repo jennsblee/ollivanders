@@ -5,6 +5,14 @@ class WandsController < ApplicationController
 
   def index
     @wands = policy_scope(Wand).order(created_at: :desc)
+
+     @markers = @wands.geocoded.map do |wand|
+      {
+        lat: wand.latitude,
+        lng: wand.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { wand: wand }),
+        image_url: helpers.asset_url('cat.png')
+      }
   end
 
   def new
