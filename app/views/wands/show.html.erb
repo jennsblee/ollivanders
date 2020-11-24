@@ -8,4 +8,7 @@
 
 <% if current_user == @wand.user %>
   <%= link_to 'edit', edit_wand_path(@wand) %>
+  <%= link_to 'delete', wand_path, method: :delete, data: { confirm: "Are you sure?" } %>
 <% end %>
+
+<%= link_to 'book', new_wand_booking_path(@wand) %>
