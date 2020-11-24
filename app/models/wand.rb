@@ -8,6 +8,5 @@ class Wand < ApplicationRecord
 
   validates :wood, presence: true, uniqueness: { scope: :core }, inclusion: { in: WOOD_TYPES }
   validates :core, presence: true, inclusion: { in: CORE_TYPES }
-  validates :price, presence: true
-  validates :size, presence: true
+  validates :name, :price, :size, :description, presence: true
 end

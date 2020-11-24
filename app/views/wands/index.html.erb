@@ -9,8 +9,9 @@
       <% if policy(wand).destroy? %>
       <li  class="list-inline-item"><%= link_to wand, method: :destroy, data: { confirm: 'Are you sure?'}  do %><i class="fas fa-trash-alt"></i><% end %></li>
     <% end %>
+  <% end %>
   </ul>
-  
+
   <% if policy(Wand).new? %>
     <%= link_to 'New Wand Listing', new_wand_path %>
   <% end %>
