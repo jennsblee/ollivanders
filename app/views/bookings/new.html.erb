@@ -1,6 +1,7 @@
+<div class="bookings-form-background-img">
 <div class="container d-flex vh-100 justify-content-center align-items-center">
     <div class= 'col-sm-12 col-md-10 col-lg-8 col-xl-8 justify-content-center'>
-      <form class= 'booking-form p-5 border rounded'>
+      <form class= 'booking-form p-5'>
     <h1>Booking <%= @wand.name %> </h1>
       <%= simple_form_for ([@wand, @booking]) do |w| %>
         <%#= f.error_notification %>
@@ -9,8 +10,9 @@
         <%= w.input :check_out %>
         <%#= w.input :check_out, as: :date, wrapper: :date, input_html: {value: I18n.l(w.object.date)} %>
         <%#= w.input :check_in, as: :string, wrapper: :date, input_html: {value: I18n.l(w.object.date)} %>
-        <%= w.button :submit %>
+        <%= w.button :submit, class: 'bookings-button'%>
       <% end %>
       </form>
     </div>
+</div>
 </div>
