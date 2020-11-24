@@ -1,1 +1,8 @@
-<%= render 'shared/form', wand: @wand %>
+<div class="container d-flex vh-100 justify-content-center align-items-center">
+  <div class= 'col-sm-12 col-md-10 col-lg-9 col-xl-9 justify-content-center'>
+    <form class= 'booking-form p-5 border rounded'>
+      <h1>Edit <%= @wand.name %> </h1>
+      <%= render 'shared/form', wand: @wand %>
+    </form>
+  </div>
+</div>
