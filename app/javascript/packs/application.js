@@ -30,11 +30,13 @@ import "bootstrap";
 import { initSelect2 } from '../components/init_select2';
 import { initSweetalert } from '../components/init_sweetalert';
 import '../components/init_flatpickr';
+import { initMapbox } from '../components/init_mapbox';
 
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   initSelect2();
+  initMapbox();
   initSweetalert('#sweet-alert-demo', {
       title: "A nice alert",
       text: "This is a great alert, isn't it?",

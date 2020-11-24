@@ -63,7 +63,7 @@ class WandsController < ApplicationController
   end
 
   def wand_params
-    params.require(:wand).permit(:name, :wood, :core, :price, :size, :description, photos: [])
+    params.require(:wand).permit(:name, :wood, :core, :price, :size, :description, :address, photos: [])
   end
 
   def authorize_wand
