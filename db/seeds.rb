@@ -28,11 +28,13 @@ Wand.destroy_all
         price: rand(25..100),
         description: Faker::Movies::HarryPotter.quote,
         name: Faker::Movies::HarryPotter.house,
-        user: user
+        user: user,
+
       }
-    wand = Wand.create(wand_attributes)
+
     puts "Created #{user.first_name} #{user.last_name} with wand #{wand.name}"
     end
 end
+
 
 
