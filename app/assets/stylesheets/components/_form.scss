@@ -13,11 +13,10 @@
 .form-partial-button {
   border-radius: 10px;
   background: linear-gradient(#cabcac, #e8e6dfc4);
-  transition: 2s;
-  ;
 
   &:hover {
     background: linear-gradient(#3e1922d1, #564348d1);
+    transition: 2s;
   }
 }
 
