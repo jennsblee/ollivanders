@@ -1,19 +1,21 @@
-<div class="container">
-  <ul>
+<div class="background-img">
+
+  <div class="cards d-flex row justify-content-center">
+
     <% @wands.each do |wand| %>
-      <li><%= wand.name.capitalize %></li>
-      <li  class="list-inline-item"><%= link_to wand do %><i class="fas fa-eye"></i><% end %></li>
-      <% if policy(wand).edit? %>
-      <li  class="list-inline-item"><%= link_to edit_wand_path(wand) do %><i class="fas fa-pencil-alt"></i><% end %></li>
-      <% end %>
-      <% if policy(wand).destroy? %>
-      <li  class="list-inline-item"><%= link_to wand, method: :destroy, data: { confirm: 'Are you sure?'}  do %><i class="fas fa-trash-alt"></i><% end %></li>
+      <div class="card col-3 m-5">
+        <%= cl_image_tag wand.photos.first.key, height: 200, crop: :fill, class: "card-img-top" %>
+        <div class="card-body">
+          <h3 class="card-title"><%= link_to wand.name.capitalize, wand_path(wand)%></h3>
+          <% if current_user == wand.user %>
+            <%= link_to edit_wand_path(wand) do %><i class="fas fa-pencil-alt card-link"></i><% end %>
+            <%= link_to wand, method: :destroy, data: { confirm: 'Are you sure?'}  do %><i class="fas fa-trash-alt card-link"></i><% end %>
+          <% end %>
+        </div>
+      </div>
     <% end %>
-  <% end %>
-  </ul>
+  </div>
 
-  <% if policy(Wand).new? %>
-    <%= link_to 'New Wand Listing', new_wand_path %>
-  <% end %>
-
-</div>
+    <% if policy(Wand).new? %>
+      <%= link_to 'New Wand Listing', new_wand_path %>
+    <% end %>

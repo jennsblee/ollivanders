@@ -1,5 +1,5 @@
 class Wand < ApplicationRecord
-  WOOD_TYPES = ["Acacia", "Alder", "Apple", "Ash", "Aspen", "Beech", "Blackthorn", "Black Walnut", "Cedar", "Cherry", "Chestnut", "Cypress", "Dogwood", "Ebony", "Elder", "Elm", "English Oak", "Fir", "Hawthorn", "Hazel", "Holly", "Hornbeam", "Larch", "Laurel", "Maple", "Pear", "Pine", "Poplar", "Red Oak", "Redwood", "Rowan", "Silver Lime", "Spruce", "Sycamore", "Vine", "Walnut", "Willow", "Yew"]
+  WOOD_TYPES = ["Acacia", "Alder", "Apple", "Ash", "Aspen", "Beech", "Birch", "Blackthorn", "Black Walnut", "Cedar", "Cherry", "Chestnut", "Cypress", "Dogwood", "Ebony", "Elder", "Elm", "English Oak", "Fir", "Hawthorn", "Hazel", "Holly", "Hornbeam", "Larch", "Laurel", "Maple", "Pear", "Pine", "Poplar", "Red Oak", "Redwood", "Rosewood", "Rowan", "Silver Lime", "Spruce", "Sycamore", "Vine", "Walnut", "Willow", "Yew"]
   CORE_TYPES = ["Unicorn Hair", "Dragon Heartstring", "Pheonix Feather", "Veela Hair", "Thestral Tail Hair", "Thunderbird Feather", "Jackalope Antler","Fairy Wing"]
 
   belongs_to :user
