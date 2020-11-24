@@ -36,8 +36,8 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   initSelect2();
   initSweetalert('#sweet-alert-demo', {
-  title: "A nice alert",
-  text: "This is a great alert, isn't it?",
-  icon: "success"
-});
+      title: "A nice alert",
+      text: "This is a great alert, isn't it?",
+      icon: "success",
+      timer: 3000 });
 });

@@ -12,7 +12,7 @@ class BookingsController < ApplicationController
     @booking.wand = Wand.find(params[:wand_id])
 
     if @booking.save
-      redirect_to dashboard_path(current_user), notice: 'Booking was successfully created.'
+      redirect_to dashboard_path(current_user), alert: 'Booking was successfully created.'
     else
       render :new
     end
