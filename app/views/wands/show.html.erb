@@ -1,5 +1,9 @@
 <div class="container pad20">
-    <%= cl_image_tag("harry_potter_wand_fodtcx") %>
+<div class="text-center">
+  <% @wand.photos.each do |photo| %>
+   <%= cl_image_tag(photo.key, height: 300, width: 400, crop: :fill) %>
+  <% end %>
+</div>
 
   <h1><%= @wand.name %></h1>
   <h3><%= @wand.description %></h3>
@@ -10,7 +14,7 @@
   <h5>price: $ <%= @wand.price %></h5>
 
 
-  <% if policy(@wand).edit? %>
+  <% if current_user == @wand.user %>
     <%= link_to edit_wand_path(@wand) do %><i class="fas fa-pencil-alt"></i><% end %>
     <%= link_to 'delete', wand_path, method: :delete, data: { confirm: "Are you sure?" } %>
   <% end %>
@@ -21,8 +25,5 @@
 
 </div>
 
-<%# @wand.photos.attachments.each do |attachment| %>
-  <%= cl_image_tag(@wand.photos.first.key, height: 300, width: 400, crop: :fill) %>
-<%# end %>
 
 
