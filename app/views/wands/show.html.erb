@@ -32,7 +32,7 @@
     <%= link_to 'delete', wand_path, method: :delete, data: { confirm: "Are you sure?" } %>
   <% end %>
 <div class="container col-sm-8 text-center">
-  <button type="button" class="btn btn-secondary btn-lg btn btn-light mb-20">
+  <button type="button" class="btn btn-secondary btn-lg btn button">
       <% if policy(Booking).new? %>
         <%= link_to 'Book this wand', new_wand_booking_path(@wand) %>
       <% end %>
