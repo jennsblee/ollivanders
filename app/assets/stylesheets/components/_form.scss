@@ -11,9 +11,16 @@
 }
 
 .form-partial-button {
-  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));
+  border-radius: 10px;
+  background: linear-gradient(#cabcac, #e8e6dfc4);
+  transition: 2s;
+  ;
+
+  &:hover {
+    background: linear-gradient(#3e1922d1, #564348d1);
+  }
 }
 
 .form-inputs {
-  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));
+  color: #c5bca675;
 }
