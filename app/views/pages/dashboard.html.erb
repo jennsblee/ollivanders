@@ -1,17 +1,36 @@
-<h1>Welcome, <%= @user.first_name %></h1>
+<div class="background-color-brown">
+  <div class="transparent-background">
 
-<% if @wands %>
-  <ul>
-    <% @wands.each do |wand| %>
-      <li><%= wand.name %></li>
-    <% end %>
-  </ul>
-<% end %>
+    <h1 class="dashboard-header">Welcome, <%= @user.first_name %></h1>
 
-<% if @bookings %>
-  <ul>
-    <% @bookings.each do |booking| %>
-      <li><%= booking.check_in %> - <%= booking.check_out %></li>
+    <div>
+      <% if @wands %>
+        <ul>
+          <%= @wands %>
+          <% @wands.each do |wand| %>
+            <li>
+              <%= wand.name %>
+              <%= link_to edit_wand_path(wand) do %><i class="fas fa-pencil-alt card-link"></i><% end %>
+              <%= link_to wand, method: :destroy, data: { confirm: 'Are you sure?'}  do %><i class="fas fa-trash-alt card-link"></i><% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <h3>You have not posted any listings yet</h3>
+      <% end %>
+      <%= link_to 'Post a New Wand Listing', new_wand_path %>
+    </div>
+
+    <% if @bookings %>
+      <ul>
+        <% @bookings.each do |booking| %>
+          <li><%= booking.check_in %> - <%= booking.check_out %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <h3>You have no bookings</h3>
     <% end %>
-  </ul>
-<% end %>
+
+  </div>
+</div>
+

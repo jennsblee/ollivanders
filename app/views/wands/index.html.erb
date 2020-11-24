@@ -11,10 +11,6 @@
           </div>
           <div class="card-body">
             <h3 class="card-title"><%= link_to wand.name, wand_path(wand)%></h3>
-            <% if current_user == wand.user %>
-              <%= link_to edit_wand_path(wand) do %><i class="fas fa-pencil-alt card-link"></i><% end %>
-              <%= link_to wand, method: :destroy, data: { confirm: 'Are you sure?'}  do %><i class="fas fa-trash-alt card-link"></i><% end %>
-            <% end %>
           </div>
         </div>
       <% end %>
