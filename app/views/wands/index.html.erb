@@ -1,18 +1,18 @@
 <div class="container">
   <ul>
     <% @wands.each do |wand| %>
-    <li><%= wand.name.capitalize %></li>
-    <li  class="list-inline-item"><%= link_to wand do %><i class="fas fa-eye"></i><% end %></li>
-    <% if policy(wand).edit? %>
-    <li  class="list-inline-item"><%= link_to edit_wand_path(wand) do %><i class="fas fa-pencil-alt"></i><% end %></li>
-    <% end %>
-    <% if policy(wand).destroy? %>
-    <li  class="list-inline-item"><%= link_to wand, method: :destroy, data: { confirm: 'Are you sure?'}  do %><i class="fas fa-trash-alt"></i><% end %></li>
-    <% end %>
+      <li><%= wand.name.capitalize %></li>
+      <li  class="list-inline-item"><%= link_to wand do %><i class="fas fa-eye"></i><% end %></li>
+      <% if policy(wand).edit? %>
+      <li  class="list-inline-item"><%= link_to edit_wand_path(wand) do %><i class="fas fa-pencil-alt"></i><% end %></li>
+      <% end %>
+      <% if policy(wand).destroy? %>
+      <li  class="list-inline-item"><%= link_to wand, method: :destroy, data: { confirm: 'Are you sure?'}  do %><i class="fas fa-trash-alt"></i><% end %></li>
     <% end %>
   </ul>
-</div>
+  
+  <% if policy(Wand).new? %>
+    <%= link_to 'New Wand Listing', new_wand_path %>
+  <% end %>
 
-<% if policy(Wand).new? %>
-  <%= link_to 'New Wand', new_wand_path %>
-<% end %>
+</div>
