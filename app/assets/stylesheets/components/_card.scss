@@ -1,22 +1,29 @@
 .card {
-  background-image: url(https://image.freepik.com/free-vector/abstract-floral-frame-vintage-background-vector_1055-9139.jpg);
-  background-size: contain;
-  background-position: center;
-  box-shadow: 0 0 5px;
-  height: 210px;
+  // background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRItt_611gZJNI9Fpc1zzBGPsqMHWkvRRChiQ&usqp=CAU);
+  // background-size: contain;
+  // background-position: center;
+  // box-shadow: 0 0 5px;
+  background-color: transparent;
+  height: 250px;
+  width: 280px;
   border-radius: 5px;
+}
+
+.card-img-top {
+  border-radius: 20px;
+  border: 5px #c7956d solid;
+  width: 150px;
+  height: 150px;
 }
 
 .card-body {
   text-align: center;
-  text-shadow: 0px 0px 2px;
+  text-shadow: 0px 0px 8px #87431d;
 }
 
 .card-title a {
-  background-color: #EAD6B3;
-  color: #4a3f35;
-  line-height: 100px;
-  font-size: 30px;
+  color: #c7956d;
+  font-size: 25px;
   &:hover {
     text-decoration: none;
     font-weight: bold;
@@ -29,3 +36,5 @@
     color: #646464;
   }
 }
+
+// https://image.freepik.com/free-vector/abstract-floral-frame-vintage-background-vector_1055-9139.jpg
