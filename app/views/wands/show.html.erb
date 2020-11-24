@@ -1,19 +1,25 @@
-<h1><%= @wand.name %></h1>
-<h3><%= @wand.description %></h3>
+<div class="container">
 
-<h5>wood: <%= @wand.wood %></h5>
-<h5>core: <%= @wand.core %></h5>
-<h5>size: <%= @wand.size %> cm</h5>
-<h5>price: $ <%= @wand.price %></h5>
 
-<% if policy(@wand).edit? %>
-  <%= link_to edit_wand_path(@wand) do %><i class="fas fa-pencil-alt"></i><% end %>
-  <%= link_to 'delete', wand_path, method: :delete, data: { confirm: "Are you sure?" } %>
-<% end %>
 
-<% if policy(Booking).new? %>
-  <%= link_to 'book', new_wand_booking_path(@wand) %>
-<% end %>
+  <h1><%= @wand.name %></h1>
+  <h3><%= @wand.description %></h3>
+
+  <h5>wood: <%= @wand.wood %></h5>
+  <h5>core: <%= @wand.core %></h5>
+  <h5>size: <%= @wand.size %> cm</h5>
+  <h5>price: $ <%= @wand.price %></h5>
+
+  <% if policy(@wand).edit? %>
+    <%= link_to edit_wand_path(@wand) do %><i class="fas fa-pencil-alt"></i><% end %>
+    <%= link_to 'delete', wand_path, method: :delete, data: { confirm: "Are you sure?" } %>
+  <% end %>
+
+  <% if policy(Booking).new? %>
+    <%= link_to 'book', new_wand_booking_path(@wand) %>
+  <% end %>
+
+</div>
 
 <%# @wand.photos.each do |photo| %>
   <%#= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
