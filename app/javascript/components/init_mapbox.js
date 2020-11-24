@@ -34,7 +34,7 @@ const initMapbox = () => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/ollivanders/ckhvz8v5j0v8r19o6xlmtbqod'
+      style: 'mapbox://styles/ollivanders/ckhw2ak630y7719r1a99h423t'
     });
 
 
