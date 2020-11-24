@@ -17,6 +17,8 @@
       <%= w.input :size %>
     </div>
   </div>
-  <%= w.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= w.button :submit %>
+    <%= w.input :photos, as: :file, input_html: { multiple: true } %>
+  <div>
+  <div class='dropdown-divider'></div>
+    <%= w.button :submit, class: 'btn btn-secondary' %>
 <% end %>
