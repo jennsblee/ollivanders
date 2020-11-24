@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+.background-color-brown {
+  background-color: #5a3921;
+  background-size: cover;
+  opacity: 0.8;
+}
+
+.transparent-background {
+  border-radius: 20px;
+  box-shadow: -1px 1px 10px #000;
+  background-color: #dbcbbd;
+  opacity: 0.8;
+}
+
+.dashboard-header {
+  font-family: 'Satisfy', cursive;
+  font-size: 80px;
+  font-weight: bold;
+  text-shadow: -1px 1px 2px #000;
+}
