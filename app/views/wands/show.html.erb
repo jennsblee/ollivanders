@@ -1,4 +1,4 @@
-<div class="container pad20">
+<div class="container pad50">
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <% @wand.photos.each_with_index do |photo, i| %>
@@ -34,7 +34,9 @@
 
   <button type="button" class="show_button">
       <% if policy(Booking).new? %>
-        <%= link_to 'Book this wand', new_wand_booking_path(@wand) %>
+        <%= link_to new_wand_booking_path(@wand) do %>
+          <p id="button-booking"> Book this wand </p>
+        <% end %>
       <% end %>
   </button>
 </div>
