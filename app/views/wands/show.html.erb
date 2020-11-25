@@ -26,12 +26,12 @@
   <h5>size: <%= @wand.size %> cm</h5>
   <h5>price: $ <%= @wand.price %></h5>
 
-</div>
+
   <% if current_user == @wand.user %>
     <%= link_to edit_wand_path(@wand) do %><i class="fas fa-pencil-alt"></i><% end %>
     <%= link_to 'delete', wand_path, method: :delete, data: { confirm: "Are you sure?" } %>
   <% end %>
-<div class="container col-sm-8 text-center">
+
   <button type="button" class="btn btn-secondary btn-lg btn button">
       <% if policy(Booking).new? %>
         <%= link_to 'Book this wand', new_wand_booking_path(@wand) %>
