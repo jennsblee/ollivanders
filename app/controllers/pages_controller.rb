@@ -5,8 +5,7 @@ class PagesController < ApplicationController
 
   def dashboard
     @user = current_user
-    @wands = @user.wands
-    @wands_string = @wands.map { |rating| rating.rating_count }.join(", ")
+    @wands = @user.wands.all
     @bookings = @user.bookings
   end
 
