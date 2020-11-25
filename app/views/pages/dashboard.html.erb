@@ -1,5 +1,5 @@
 <div class="background-color-brown d-flex h-100 w-100 justify-content-center align-self-center">
-  <div class="transparent-background w-75 h-75 p-5 mt-5">
+  <div class="transparent-background w-75 p-5 my-5">
     <h1 class="dashboard-header">Welcome, <%= @user.first_name %></h1>
 
     <div>
@@ -19,7 +19,7 @@
           <li class="dashboard-listing"><h6>No listings yet</h6></li>
         </ul>
       <% end %>
-      <strong><%= link_to 'Post a New Wand Listing', new_wand_path, class:"dashboard-new-wand" %></strong>
+      <strong><%= link_to 'Post a New Wand Listing', new_wand_path, class:"dashboard-wand" %></strong>
     </div>
 
     <div>
@@ -35,6 +35,7 @@
           <li class="dashboard-listing"><h6>No bookings yet</h6></li>
         </ul>
       <% end %>
+      <strong><%= link_to 'Book a Wand', wands_path, class:"dashboard-wand" %></strong>
     </div>
 
   </div>
