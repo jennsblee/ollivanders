@@ -1,8 +1,63 @@
-<%= form_tag wands_path, method: :get do %>
-  <%= text_field_tag :query,
+<%#= form_tag wands_path, method: :get do %>
+<!-- <div class="search-form-control form-group">
+ -->  <%#= text_field_tag :query,
     params[:query],
     class: "form-control",
     placeholder: "Search for a Wand"
   %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
+  <%#= button_tag(type: "submit", class: "btn btn-flat", id: "basic-addon1") do %>
+    <!-- <i class="fas fa-search"></i> -->
+  <%# end %>
+<%# end %>
+
+
+<%= form_tag wands_path, method: :get do %>
+<div class="search-form-control form-group flex-form">
+  <%= text_field_tag :query,
+    params[:query],
+    class: "control text",
+    placeholder: "Search for a Wand"
+  %>
+  <%= date_field_tag :check_out, :date, class: "datepicker control", placeholder: 'From' %>
+  <%= date_field_tag :check_in, :date, class: "datepicker control", placeholder: 'To'  %>
+  <%= button_tag(type: "submit", class: "btn btn-flat") do %>
+    <i class="fas fa-search"></i>
+  <% end %>
 <% end %>
+
+
+
+
+
+<!-- <div class="cover">
+
+  <form class="flex-form">
+
+    <input type="search" placeholder="Where do you wanna go?" />
+    <label for="from">From</label>
+    <input type="date" name="from" />
+
+    <label for="to">To</label>
+    <input type="date" name="to" />
+
+    <select name="guests" id="guests">
+      <option value="1">1 guest</option>
+      <option value="2">2 guests</option>
+      <option value="3">3 guests</option>
+      <option value="4">4 guests</option>
+      <option value="5">5 guests</option>
+    </select>
+
+    <input type="submit" value="Search" />
+
+  </form>
+
+</div> -->
+
+
+
+
+
+<%#= submit_tag do, class: "btn btn-flat" %>
+    <!-- <i class="fas fa-search"></i> Search -->
+  <%# end %>

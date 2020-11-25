@@ -14,6 +14,8 @@ class Wand < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
 
   include PgSearch::Model
+  multisearchable against: [:name, :wood, :core]
+
   pg_search_scope :search,
                   against: [:name, :wood, :core],
                   associated_against: {
