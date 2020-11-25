@@ -2,7 +2,7 @@
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <% @wand.photos.each do |photo| %>
-      <div class="carousel-item active images">
+      <div class="carousel-item active">
         <%= cl_image_tag(photo.key, class: "d-block w-50 images") %>
       </div>
     <% end %>
@@ -32,7 +32,10 @@
     <%= link_to 'delete', wand_path, method: :delete, data: { confirm: "Are you sure?" } %>
   <% end %>
 
-  <% if policy(Booking).new? %>
-    <%= link_to 'book', new_wand_booking_path(@wand) %>
-  <% end %>
+  <button type="button" class="btn btn-secondary btn-lg btn button">
+      <% if policy(Booking).new? %>
+        <%= link_to 'Book this wand', new_wand_booking_path(@wand) %>
+      <% end %>
+  </button>
 </div>
+
