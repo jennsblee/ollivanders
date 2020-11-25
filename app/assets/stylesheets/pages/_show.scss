@@ -1,0 +1,31 @@
+.show-background-color {
+  background-color: #39311d;
+}
+
+.show-page-card {
+  background-image: url('https://wallpaperaccess.com/full/1302751.jpg');
+  background-size: cover;
+  border-radius: 5px;
+  box-shadow: -1px 1px 10px #000;
+}
+
+.show-header {
+  color: #2f2519;
+  font-weight: bold;
+  font-size: 80px;
+  text-shadow: 0px 0px 15px #2f2519;
+}
+
+.show-left {
+  h4 {
+    text-shadow: 0px 0px 10px #2f2519;
+  }
+  h5 {
+    margin: 0;
+    text-shadow: 0px 0px 8px #2f2519;
+  }
+}
+
+.text {
+  margin-bottom: 20px;
+}

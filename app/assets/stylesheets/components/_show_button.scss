@@ -1,25 +1,21 @@
 .show_button {
-  background-color: #c7956d;
+  margin-top: 10px;
+  background-color: #4a3f35;
   border: none;
-  color: white;
-  padding: 15px 32px;
+  padding: 5px;
   text-align: center;
-  font-size: 32px;
+  font-size: 20px;
   border-radius: 8px;
-  margin: auto;
-  display: flex;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 
-}
-#button-booking {
-  color: white;
-  text-decoration: none;
-}
+  a {
+    text-decoration: none;
+    color: #dbcbbd;
 
-a:hover {
-  text-decoration: none;
-  opacity: 0.5;
-
+    &:hover {
+      color: white;
+    }
+  }
 }
 
 .carousel-control-prev-icon,
