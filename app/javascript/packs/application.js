@@ -27,9 +27,9 @@ import "bootstrap";
 
 
 // Internal imports, e.g:
+import { initFlatpickr } from "../components/init_flatpickr";
 import { initSelect2 } from '../components/init_select2';
 import { initSweetalert } from '../components/init_sweetalert';
-import '../components/init_flatpickr';
 import { initMapbox } from '../components/init_mapbox';
 import { initAutocomplete } from "../components/init_autocomplete";
 
@@ -38,11 +38,12 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   initSelect2();
   initMapbox();
-  $('.carousel').carousel()
+  initFlatpickr();
+  $('.carousel').carousel();
   initAutocomplete();
-  initSweetalert('#sweet-alert-demo', {
-      title: "A nice alert",
-      text: "This is a great alert, isn't it?",
-      icon: "success",
-      timer: 3000 });
+  // initSweetalert('#sweet-alert-demo', {
+  //     title: "A nice alert",
+  //     text: "This is a great alert, isn't it?",
+  //     icon: "success",
+  //     timer: 3000 });
 });

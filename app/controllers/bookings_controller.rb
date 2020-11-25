@@ -4,6 +4,7 @@ class BookingsController < ApplicationController
   def new
     @wand = Wand.find(params[:wand_id])
     @booking = Booking.new
+    @booking.wand = @wand
   end
 
   def create
