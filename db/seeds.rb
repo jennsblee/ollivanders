@@ -8,6 +8,7 @@
 require 'open-uri'
 
 puts "Cleaning database..."
+Booking.destroy_all
 User.destroy_all
 Wand.destroy_all
 
@@ -28,6 +29,7 @@ wand_attributes = {
   description: "It is said to be the most powerful wand that has ever existed, able to perform feats of magic that would normally be impossible even for the most skilled wizards, such as mending another wand damaged beyond normal magical repair.",
   name: "Elder Wand",
   user: user,
+  address: 'Glenfinnan Viaduct, Lochaber, Scotland',
 }
 wand = Wand.new(wand_attributes)
 wand.photos.attach(io: file, filename: 'elderwand.png', content_type: 'image/jpg')
@@ -43,7 +45,8 @@ wand_attributes2 = {
   price: 29,
   description: "This wand was \"pleasantly springy\"; hair from particularly fine male unicorn (seventeen hands high).",
   name: "Cedric Diggory's Wand",
-  user: user
+  user: user,
+  address: 'Glencoe, Argyll, Scotland'
 }
 wand2 = Wand.new(wand_attributes2)
 wand2.photos.attach(io: file2, filename: 'cedricdiggory.png', content_type: 'image/jpg')
@@ -59,7 +62,8 @@ wand_attributes3 = {
   price: 34,
   description: "This wand is described as \"unyielding;\" passed into the possession of Hermione Granger after the Skirmish at Malfoy Manor in 1998.",
   name: "Bellatrix Lestrange's Wand",
-  user: user
+  user: user,
+  address: 'Freshwater West, Pembrokeshire, Wales'
 }
 wand3 = Wand.new(wand_attributes3)
 wand3.photos.attach(io: file3, filename: 'bellatrixlestrange.png', content_type: 'image/png')
@@ -84,7 +88,8 @@ wand_attributes4 = {
   price: 12,
   description: "This wand is described as \"unusually short;\" broken by a centaur's hoof in June 1996 in the Forbidden Forest.",
   name: "Dolores Umbridge's Wand",
-  user: user2
+  user: user2,
+  address: 'Durham Cathedral, Durham, England'
 }
 wand4 = Wand.new(wand_attributes4)
 wand4.photos.attach(io: file4, filename: 'doloresumbridge.png', content_type: 'image/jpg')
@@ -100,7 +105,8 @@ wand_attributes5 = {
   price: 27,
   description: "This wand passed into the possession of Harry Potter after the Skirmish at Malfoy Manor in 1998 until Harry came into possession of the Elder Wand and mended his first wand.",
   name: "Draco Malfoy's Wand",
-  user: user2
+  user: user2,
+  address: 'Bodleian Library and Christ Church College, Oxford, England'
 }
 wand5 = Wand.new(wand_attributes5)
 wand5.photos.attach(io: file5, filename: 'dracomalfoy.png', content_type: 'image/png')
@@ -117,6 +123,7 @@ wand_attributes6 = {
   description: "In this wand the core is a hair from Fleur's grandmother, who was a Veela.",
   name: "Fleur Delacour's Wand",
   user: user2,
+  address: 'King’s Cross Station, London, England'
 }
 wand6 = Wand.new(wand_attributes6)
 wand6.photos.attach(io: file6, filename: 'fleurdelacour.png', content_type: 'image/png')
@@ -141,7 +148,8 @@ wand_attributes7 = {
   price: 45,
   description: "This wand is \"brother\" to Harry Potter's wand — the core tail feathers are both from Fawkes.",
   name: "Tom Riddle's Wand",
-  user: user2
+  user: user2,
+  address: 'Leadenhall Market, London, England'
 }
 wand7 = Wand.new(wand_attributes7)
 wand7.photos.attach(io: file7, filename: 'tomriddle.png', content_type: 'image/jpg')

@@ -1,35 +1,41 @@
-<div class="background-color-brown d-flex justify-content-center align-self-center h-100 w-100">
-  <div class="transparent-background h-75 w-75 p-5">
+<div class="background-color-brown d-flex h-100 w-100 justify-content-center align-self-center">
+  <div class="transparent-background w-75 p-5 my-5">
     <h1 class="dashboard-header">Welcome, <%= @user.first_name %></h1>
 
     <div>
-      <% if @wands %>
+      <h5><strong>Your Wand Listings</strong></h5>
+      <% if !@wands.empty? %>
         <ul>
-          <%= @wands %>
           <% @wands.each do |wand| %>
-            <li>
-              <%= wand.name %>
+            <li class="dashboard-listing">
+              <%= link_to wand.name, wand_path(wand), class:"dashboard-link"%>
               <%= link_to edit_wand_path(wand) do %><i class="fas fa-pencil-alt card-link"></i><% end %>
-              <%= link_to wand, method: :destroy, data: { confirm: 'Are you sure?'}  do %><i class="fas fa-trash-alt card-link"></i><% end %>
+              &nbsp;&nbsp;<%= link_to wand, method: :destroy, data: { confirm: 'Are you sure?'}  do %><i class="fas fa-trash-alt card-link"></i><% end %>
             </li>
           <% end %>
         </ul>
       <% else %>
-        <h3>You have not posted any listings yet</h3>
+        <ul>
+          <li class="dashboard-listing"><h6>No listings yet</h6></li>
+        </ul>
       <% end %>
-      <%= link_to 'Post a New Wand Listing', new_wand_path %>
+      <strong><%= link_to 'Post a New Wand Listing', new_wand_path, class:"dashboard-wand" %></strong>
     </div>
 
     <div>
-      <% if @bookings %>
+      <h5><strong>Your Current Bookings</strong></h5>
+      <% if !@bookings.empty? %>
         <ul>
           <% @bookings.each do |booking| %>
             <li><%= booking.check_in %> - <%= booking.check_out %></li>
           <% end %>
         </ul>
       <% else %>
-        <h3>You have no bookings</h3>
+        <ul>
+          <li class="dashboard-listing"><h6>No bookings yet</h6></li>
+        </ul>
       <% end %>
+      <strong><%= link_to 'Book a Wand', wands_path, class:"dashboard-wand" %></strong>
     </div>
 
   </div>
