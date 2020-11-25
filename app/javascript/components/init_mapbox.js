@@ -40,7 +40,7 @@ const initMapbox = () => {
 
     const markers = JSON.parse(mapElement.dataset.markers);
     // Add markers to page
-    addMapToMarkers(map, markers);
+    addMarkersToMap(map, markers);
     fitMapToMarkers(map, markers);
 
     // Adding fancy little search bar
