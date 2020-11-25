@@ -1,6 +1,7 @@
 <%= simple_form_for (wand) do |w| %>
   <%= w.input :name, class: 'form-inputs'  %>
   <%= w.input :description, class: 'form-inputs'  %>
+  <%= w.input :address, class: 'form-inputs'  %>
   <div class= 'form-row'>
     <div class= 'form-col-4'>
       <%= w.input :wood, collection: Wand::WOOD_TYPES, input_html: { class: 'select2' }, class: 'form-inputs'  %>
