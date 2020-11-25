@@ -1,8 +1,9 @@
+
 <% content_for :transparent do %>
   transparent
 <% end %>
-<div class="container mt-10">
-   <%= cl_image_tag("logo_vmroto", width: 1000, height: 300, crop: :fill) %>
-  <h1>HOMEPAGE</h1>
-  <%= link_to 'wand listings', wands_path %>
+<div class='home-background-img vh-100 d-flex align-items-center'>
+<div class="container">
+   <%= image_tag("full_ollivanders_logo.png", width: 1000, height: 300, crop: :fill) %>
+</div>
 </div>

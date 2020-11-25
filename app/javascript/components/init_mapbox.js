@@ -19,6 +19,7 @@ const initMapbox = () => {
     element.className = 'marker';
     element.style.backgroundImage = `url('${marker.image_url}')`;
     element.style.backgroundSize = 'contain';
+    element.style.backgroundRepeat = "repeat-y";
     element.style.width = '100px';
     element.style.height = '100px';
 
