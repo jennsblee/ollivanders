@@ -1,8 +1,8 @@
-<div class="container pad20">
+<div class="container pad50">
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
-    <% @wand.photos.each do |photo| %>
-      <div class="carousel-item active">
+    <% @wand.photos.each_with_index do |photo, i| %>
+      <div class="carousel-item <%= 'active' if i == 0 %>">
         <%= cl_image_tag(photo.key, class: "d-block w-50 images") %>
       </div>
     <% end %>
@@ -18,13 +18,13 @@
 </div>
 
 
-  <h1><%= @wand.name %></h1>
-  <h3><%= @wand.description %></h3>
+  <h1 class= "text-center"><%= @wand.name %></h1>
+  <h3 class= "text-center"><%= @wand.description %></h3>
 
-  <h5>wood: <%= @wand.wood %></h5>
-  <h5>core: <%= @wand.core %></h5>
-  <h5>size: <%= @wand.size %> cm</h5>
-  <h5>price: $ <%= @wand.price %></h5>
+  <h4><strong><u>wood:</u></strong> &nbsp;  <%= @wand.wood %></h4>
+  <h4><strong><u>core:</u></strong> &nbsp; <%= @wand.core %></h4>
+  <h4><strong><u>size:</u></strong>  &nbsp;   <%= @wand.size %> cm</h4>
+  <h4><strong><u>price:</u></strong> &nbsp;  $<%= @wand.price %></h4>
 
 
   <% if current_user == @wand.user %>
@@ -32,10 +32,19 @@
     <%= link_to 'delete', wand_path, method: :delete, data: { confirm: "Are you sure?" } %>
   <% end %>
 
-  <button type="button" class="btn btn-secondary btn-lg btn button">
+  <button type="button" class="show_button">
       <% if policy(Booking).new? %>
-        <%= link_to 'Book this wand', new_wand_booking_path(@wand) %>
+        <%= link_to new_wand_booking_path(@wand) do %>
+          <p id="button-booking"> Book this wand </p>
+        <% end %>
       <% end %>
   </button>
 </div>
+
+
+<%# @wand.photos.each do |photo| %>
+      <!--<div class="carousel-item active">
+        <%#= cl_image_tag(photo.key, class: "d-block w-50 images") %>
+      </div>
+    <#% end %>
 
