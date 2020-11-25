@@ -10,7 +10,7 @@ class WandsController < ApplicationController
       {
         lat: wand.latitude,
         lng: wand.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { wand: wand }),
+        infoWindow: render_to_string(partial: "shared/info_window", locals: { wand: wand }),
         image_url: helpers.asset_url('wand2.png')
       }
       end
@@ -33,9 +33,7 @@ class WandsController < ApplicationController
     end
   end
 
-  def show
-
-  end
+  def show; end
 
   def edit; end
 

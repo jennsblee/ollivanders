@@ -7,7 +7,7 @@ const initMapbox = () => {
   const fitMapToMarkers = (map, markers) => {
     const bounds = new mapboxgl.LngLatBounds();
     markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-    map.fitBounds(bounds, { padding: 90, maxZoom: 15, duration: 3000 });
+    map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 2000 });
   };
 
   const addMarkersToMap = (map, markers) => {
@@ -19,8 +19,8 @@ const initMapbox = () => {
     element.className = 'marker';
     element.style.backgroundImage = `url('${marker.image_url}')`;
     element.style.backgroundSize = 'contain';
-    element.style.width = '40px';
-    element.style.height = '40px';
+    element.style.width = '100px';
+    element.style.height = '100px';
 
     new mapboxgl.Marker(element)
       .setLngLat([ marker.lng, marker.lat ])
