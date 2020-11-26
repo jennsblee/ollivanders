@@ -2,8 +2,8 @@
 <div class="container d-flex vh-100 justify-content-center align-items-center">
     <div class= 'col-sm-12 col-md-10 col-lg-8 col-xl-8 justify-content-center'>
       <div class= 'booking-form p-5'>
-    <h1>Booking <%= @wand.name %> </h1>
-      <%= simple_form_for([@wand, @booking]) do |w| %>
+    <h1>Editing booking for <%= @wand.name %> </h1>
+      <%= simple_form_for(@booking) do |w| %>
         <%#= f.error_notification %>
         <%#= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
         <%#= w.input :check_in %>

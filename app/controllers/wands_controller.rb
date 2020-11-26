@@ -57,7 +57,7 @@ class WandsController < ApplicationController
   def destroy
     @wand.destroy
 
-    redirect_to dashboard_path(current_user), notice: 'Wand was successfully deleted.'
+    redirect_to dashboard_path, notice: 'Wand was successfully deleted.'
   end
 
   private
