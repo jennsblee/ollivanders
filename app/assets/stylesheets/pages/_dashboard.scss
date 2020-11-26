@@ -5,18 +5,23 @@ h5 {
   margin-top: 20px;
 }
 
-.background-color-brown {
+.background-image {
+  background-image: url('https://images.unsplash.com/photo-1598025792291-44ed6654d628?ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80');
+  background-size: cover;
+  opacity: 0.8;
+  min-height: 100vh;
+}
+
+.background-card {
+  border-radius: 20px;
+  box-shadow: -1px 1px 10px #000;
   background-image: url('https://images.unsplash.com/photo-1603513492128-ba7bc9b3e143?ixlib=rb-1.2.1&auto=format&fit=crop&w=978&q=80');
   background-size: cover;
   opacity: 0.8;
-  position: absolute;
-}
 
-.transparent-background {
-  border-radius: 20px;
-  box-shadow: -1px 1px 10px #000;
-  background-color: #dbcbbd;
-  opacity: 0.8;
+  h1 {
+    font-family: 'Tangerine', cursive;
+  }
 }
 
 .dashboard-header {
