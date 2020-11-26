@@ -35,7 +35,9 @@ class WandsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @booking = Booking.new
+  end
 
   def edit; end
 
@@ -64,7 +66,7 @@ class WandsController < ApplicationController
   end
 
   def wand_params
-    params.require(:wand).permit(:name, :wood, :core, :price, :size, :description, :address, photos: [] )
+    params.require(:wand).permit(:name, :wood, :core, :price, :size, :description, :address, photos: [])
   end
 
   def authorize_wand
