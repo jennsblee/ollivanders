@@ -6,7 +6,7 @@
       <% if current_user == @wand.user %>
         &nbsp;
         <%= link_to edit_wand_path(@wand) do %><i class="fas fa-pencil-alt"></i><% end %>
-        <%= link_to wand_path(@wand), method: :destroy, data: { confirm: 'Are you sure?'}  do %><i class="fas fa-trash-alt"></i><% end %>
+        <%= link_to wand_path(@wand), method: :delete, data: { confirm: 'Are you sure?'}  do %><i class="fas fa-trash-alt"></i><% end %>
       <% end %>
       </h1>
 
