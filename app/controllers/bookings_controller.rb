@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   after_action :authorize_booking
-  before_action :set_booking, only: [:show, :edit, :update]
+  before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
   def show; end
 
@@ -22,23 +22,22 @@ class BookingsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @wand = @booking.wand
+  end
 
   def update
-    @booking.user = current_user
-    @booking.wand = Wand.find(params[:wand_id])
-
-    if @booking.save
-      redirect_to dashboard_path(current_user), alert: 'Booking was successfully updated.'
+    if @booking.update(booking_params)
+      redirect_to dashboard_path, alert: 'Booking was successfully updated.'
     else
-      render :new
+      render :edit
     end
   end
 
   def destroy
     @booking.destroy
 
-    redirect_to dashboard_path(current_user), notice: 'Booking was successfully deleted.'
+    redirect_to dashboard_path, notice: 'Booking was successfully deleted.'
   end
 
   private
