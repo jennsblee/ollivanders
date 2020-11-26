@@ -90,11 +90,11 @@
         <tbody>
           <% @wand.bookings.each do |booking| %>
             <tr>
-            <% if booking.status == 'pending' || 'approved' %>
+            <% if booking.status != 'declined' %>
               <% if booking.status == 'pending' %>
               <td><i class="fas fa-hourglass-half"></i></td>
               <% else %>
-              <td><i class="far fa-calendar-plus"></i></td>
+              <td><i class="fas fa-check-double"></i></td>
               <% end %>
               <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
               <td><%= booking.check_out.strftime('%A, %B %e, %Y') %></td>

@@ -41,11 +41,11 @@ class BookingsController < ApplicationController
   end
 
   def approve
-    @booking.update(state: 'approved')
+    @booking.update(status: 'approved')
   end
 
   def decline
-    @booking.update(state: 'decline')
+    @booking.update(status: 'decline')
   end
 
   private
