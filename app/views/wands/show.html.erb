@@ -1,7 +1,14 @@
 <div class="show-background-color h-100 w-100 d-flex justify-content-center">
   <div class="pt-4 h-100 w-75">
 
-    <h1 class= "text-center show-header"><%= @wand.name %></h1>
+    <h1 class= "text-center show-header">
+      <%= @wand.name %>
+      <% if current_user == @wand.user %>
+        &nbsp;
+        <%= link_to edit_wand_path(@wand) do %><i class="fas fa-pencil-alt"></i><% end %>
+        <%= link_to wand_path(@wand), method: :destroy, data: { confirm: 'Are you sure?'}  do %><i class="fas fa-trash-alt"></i><% end %>
+      <% end %>
+      </h1>
 
     <div class="content p-3 mb-5">
 
@@ -34,10 +41,12 @@
             <h5><strong>Price:</strong> &nbsp;  $<%= @wand.price %></h5>
 
 
-            <% if current_user == @wand.user %>
+<!--             <% if current_user == @wand.user %>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <%= link_to edit_wand_path(@wand) do %><i class="fas fa-pencil-alt"></i><% end %>
-              <%= link_to 'delete', wand_path, method: :delete, data: { confirm: "Are you sure?" } %>
-            <% end %>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <%= link_to wand_path(@wand), method: :destroy, data: { confirm: 'Are you sure?'}  do %><i class="fas fa-trash-alt"></i><% end %>
+            <% end %> -->
         </div>
 
   <!--         <button type="button" class="show_button">

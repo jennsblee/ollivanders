@@ -10,7 +10,7 @@
             <li class="dashboard-listing">
               <%= link_to wand.name, wand_path(wand), class:"dashboard-link"%>
               <%= link_to edit_wand_path(wand) do %><i class="fas fa-pencil-alt card-link"></i><% end %>
-              &nbsp;&nbsp;<%= link_to wand, method: :destroy, data: { confirm: 'Are you sure?'}  do %><i class="fas fa-trash-alt card-link"></i><% end %>
+              &nbsp;&nbsp;<%= link_to wand_path(wand), method: :destroy, data: { confirm: 'Are you sure?'}  do %><i class="fas fa-trash-alt card-link"></i><% end %>
             </li>
           <% end %>
         </ul>
