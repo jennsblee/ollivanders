@@ -54,8 +54,10 @@
           <%#= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
           <%#= w.input :check_in %>
           <%#= w.input :check_out %>
-          <%= w.input :check_out, as: :string, required: true, input_html: {class: "datepicker"} %>
-          <%= w.input :check_in, as: :string, required: true, input_html: {class: "datepicker"} %>
+          <%= w.label :check_out, class: "booking-form-font" %>
+          <%= w.input :check_out, label: false, as: :string, required: true, input_html: {class: "datepicker"} %>
+          <%= w.label :check_out, class: "booking-form-font" %>
+          <%= w.input :check_in, label: false, as: :string, required: true, input_html: {class: "datepicker"}, class: "booking-form-font" %>
           <%= w.submit  class: 'bookings-button', id: "sweet-alert-demo"%>
         <% end %>
       </div>
