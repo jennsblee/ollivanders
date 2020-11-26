@@ -44,6 +44,7 @@ const initMapbox = () => {
     cards.forEach((card, index) => {
       // Put a microphone on each card listening for a mouseenter event
       card.addEventListener('mouseenter', () => {
+        // alert('bug');
         // Here we trigger the display of the corresponding marker infoWindow with the "togglePopup" function provided by mapbox-gl
         mapMarkers[index].togglePopup();
       });
@@ -53,6 +54,8 @@ const initMapbox = () => {
       });
     });
     }
+
+    openInfoWindow(mapMarkers);
   }
 
   const toggleCardHighlighting = (event) => {
