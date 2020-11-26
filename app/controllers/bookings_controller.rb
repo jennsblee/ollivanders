@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   after_action :authorize_booking
-  before_action :set_booking, only: [:show, :edit, :update, :destroy]
+  before_action :set_booking, only: [:show, :edit, :update, :destroy, :approve, :decline]
 
   def show; end
 
@@ -38,6 +38,14 @@ class BookingsController < ApplicationController
     @booking.destroy
 
     redirect_to dashboard_path, notice: 'Booking was successfully deleted.'
+  end
+
+  def approve
+    @booking.update(state: 'approved')
+  end
+
+  def decline
+    @booking.update(state: 'decline')
   end
 
   private

@@ -6,7 +6,7 @@
       <% if current_user == @wand.user %>
         &nbsp;
         <%= link_to edit_wand_path(@wand) do %><i class="fas fa-pencil-alt"></i><% end %>
-        <%= link_to wand_path(@wand), method: :delete, data: { confirm: 'Are you sure?'}  do %><i class="fas fa-trash-alt"></i><% end %>
+        <%= link_to wand_path(@wand), method: :delete, remote: true, data: { confirm: 'Are you sure?'}  do %><i class="fas fa-trash-alt"></i><% end %>
       <% end %>
       </h1>
 
@@ -56,9 +56,11 @@
           </button> -->
       </div>
 
+
+     <% if current_user != @wand.user %>
       <div class="booking-form m-5 p-3">
         <h5><strong>Booking <%= @wand.name %></strong></h5>
-        <%= simple_form_for([@wand, @booking]) do |w| %>
+        <%= simple_form_for([@wand, @booking], remote: true) do |w| %>
           <%#= f.error_notification %>
           <%#= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
           <%#= w.input :check_in %>
@@ -70,6 +72,42 @@
           <%= w.submit  class: 'bookings-button', id: "sweet-alert-demo"%>
         <% end %>
       </div>
-    </div>
+      <% else %>
+      <div class="booking-form m-5 p-3">
+      <h5><strong>Your Wand has <%= pluralize @wand.bookings.size, "Booking" %></strong></h5>
+      <table cellspacing="12">
+        <% if @wand.bookings.size > 0 %>
+        <tr>
+          <th>Status</th>
+          <th>Name</th>
+          <th>Checkout</th>
+          <th>Return</th>
+          <th>Approve</th>
+          <th>Decline</th>
+          <th>Edit</th>
+        </tr>
+        <% end %>
+        <tbody>
+          <% @wand.bookings.each do |booking| %>
+            <tr>
+            <% if booking.status == 'pending' || 'approved' %>
+              <% if booking.status == 'pending' %>
+              <td><i class="fas fa-hourglass-half"></i></td>
+              <% else %>
+              <td><i class="far fa-calendar-plus"></i></td>
+              <% end %>
+              <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
+              <td><%= booking.check_out.strftime('%A, %B %e, %Y') %></td>
+              <td><%= booking.check_in.strftime('%A, %B %e, %Y') %></td>
+              <td><%= link_to approve_booking_path(booking), method: :post, remote: true do %><i class="fas fa-check"></i><% end %></td>
+              <td><%= link_to decline_booking_path(booking), method: :post, remote: true do %><i class="fas fa-times"></i><% end %></td>
+              <td><%= link_to edit_booking_path(booking) do %><i class="fas fa-pencil-alt"></i><% end %></td>
+            <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+    <% end %>
   </div>
 </div>
