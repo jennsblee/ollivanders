@@ -6,7 +6,7 @@
 
     <div class="cards d-flex row justify-content-center mx-0 mb-5">
       <% @wands.each do |wand| %>
-        <div class="card d-flex align-self-center">
+        <div class="card index-card d-flex align-self-center">
           <div class="d-flex justify-content-center mt-5">
             <%= link_to wand_path(wand) do cl_image_tag wand.photos.first.key, crop: :fill, class: "card-img-top" end %>
           </div>

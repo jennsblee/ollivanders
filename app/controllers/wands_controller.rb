@@ -4,16 +4,18 @@ class WandsController < ApplicationController
   after_action :authorize_wand, except: :index
 
   def index
+    # params[:query].present? ? @wands = Wand.search(params[:query]) : @wands = policy_scope(Wand).order(created_at: :desc)
     @wands = policy_scope(Wand).order(created_at: :desc)
+    @wands = Wand.search(params[:query]) if params[:query].present?
 
-      @markers = @wands.geocoded.map do |wand|
+    @markers = @wands.geocoded.map do |wand|
       {
         lat: wand.latitude,
         lng: wand.longitude,
         infoWindow: render_to_string(partial: "shared/info_window", locals: { wand: wand }),
         image_url: helpers.asset_url('wand2.png')
       }
-      end
+    end
   end
 
   def new
@@ -64,7 +66,7 @@ class WandsController < ApplicationController
   end
 
   def wand_params
-    params.require(:wand).permit(:name, :wood, :core, :price, :size, :description, :address, photos: [])
+    params.require(:wand).permit(:name, :wood, :core, :price, :size, :description, :address, photos: [] )
   end
 
   def authorize_wand
