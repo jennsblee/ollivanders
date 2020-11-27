@@ -26,7 +26,9 @@
             <% else %>
               <li class="dashboard-listing"><h6>No listings yet</h6></li>
             <% end %>
-            <li class="dashboard-listing"><strong><%= link_to 'Post a New Wand Listing', new_wand_path, class:"dashboard-wand" %></strong></li>
+            <div class="button-dashboard">
+              <li class="dashboard-listing"><strong><%= link_to 'Post a New Wand Listing', new_wand_path, class:"dashboard-wand" %></strong></li>
+            </div>
           </ul>
         </div>
 
@@ -51,43 +53,50 @@
             <% else %>
                 <li class="dashboard-listing"><h6>No bookings yet</h6></li>
             <% end %>
-            <li class="dashboard-listing"><strong><%= link_to 'Book a Wand', wands_path, class:"dashboard-wand" %></strong></li>
+            <div class="button-dashboard">
+              <li class="dashboard-listing"><strong><%= link_to 'Book a Wand', wands_path, class:"dashboard-wand" %></strong></li>
+            </div>
           </ul>
         </div>
 
         <div class="tab-pane fade" id="v-pills-lending" role="tabpanel" aria-labelledby="v-pills-lending-tab">
           <% if !@received_bookings.empty? %>
             <table cellspacing="12">
-              <tr>
+              <tr class="table-label">
                 <th>Status</th>
                 <th>Name</th>
                 <th>Checkout</th>
                 <th>Return</th>
                 <th>Approve</th>
-                <th>Decline</th>
-                <th>Edit</th>
+                <th> Decline</th>
+                <th> Edit</th>
               </tr>
 
               <tbody>
                 <% @received_bookings.each do |booking| %>
                   <tr>
-                  <% if booking.status != 'declined' %>
                     <% if booking.status == 'pending' %>
                       <td><i class="fas fa-hourglass-half"></i></td>
+                      <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
+                      <td><%= booking.check_out.strftime('%A, %B %e') %></td>
+                      <td><%= booking.check_in.strftime('%A, %B %e') %></td>
+                      <td><%= link_to approve_booking_path(booking), method: :post, remote: true do %><i class="fas fa-check dashboard-link"></i><% end %></td>
+                      <td><%= link_to decline_booking_path(booking), method: :post, remote: true do %><i class="fas fa-times dashboard-link"></i><% end %></td>
+                      <td><%= link_to edit_booking_path(booking) do %><i class="fas fa-pencil-alt dashboard-link"></i><% end %></td>
                     <% else %>
                       <td><i class="fas fa-check-double"></i></td>
+                      <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
+                      <td><%= booking.check_out.strftime('%A, %B %e') %></td>
+                      <td><%= booking.check_in.strftime('%A, %B %e') %></td>
                     <% end %>
-                    <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
-                    <td><%= booking.check_out.strftime('%A, %B %e, %Y') %></td>
-                    <td><%= booking.check_in.strftime('%A, %B %e, %Y') %></td>
-                    <td><%= link_to approve_booking_path(booking), method: :post, remote: true do %><i class="fas fa-check"></i><% end %></td>
-                    <td><%= link_to decline_booking_path(booking), method: :post, remote: true do %><i class="fas fa-times"></i><% end %></td>
-                    <td><%= link_to edit_booking_path(booking) do %><i class="fas fa-pencil-alt"></i><% end %></td>
-                  <% end %>
                   </tr>
                 <% end %>
               </tbody>
             </table>
+          <% else %>
+            <ul>
+              <li class="dashboard-listing"><h6>No requests yet</h6></li>
+            </ul>
           <% end %>
         </div>
 

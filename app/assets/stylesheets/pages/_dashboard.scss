@@ -36,7 +36,7 @@
 }
 
 .tab-content {
-  width: 600px;
+  width: 700px;
   height: 300px;
   border: 3px #2f2519 solid;
   background-image: linear-gradient(rgba(246,240,234,0.5), rgba(241,223,209,0.5));
@@ -64,7 +64,6 @@
   background-color: #2f2519;
   padding: 10px;
   border-radius: 5px;
-  margin-top: 20px;
   margin-left: 20px;
 
   &:hover {
@@ -73,10 +72,23 @@
   }
 }
 
+.button-dashboard {
+  margin-left: -20px;
+  margin-top: 20px;
+}
+
 .dashboard-link {
   color: #2f2519;
 
   &:hover {
     color: #3e3838;
   }
+}
+
+th {
+  font-size: 20px;
+}
+
+.table-label {
+  margin-bottom: 10px;
 }
