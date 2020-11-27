@@ -79,8 +79,13 @@
                       <td><%= booking.check_in.strftime('%A, %B %e') %></td>
                       <td><%= link_to approve_booking_path(booking), method: :post, remote: true do %><i class="fas fa-check dashboard-link"></i><% end %></td>
                       <td><%= link_to decline_booking_path(booking), method: :post, remote: true do %><i class="fas fa-times dashboard-link"></i><% end %></td>
-                    <% else %>
+                    <% elsif booking.status == 'approved' %>
                       <td><i class="fas fa-check-double"></i></td>
+                      <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
+                      <td><%= booking.check_out.strftime('%A, %B %e') %></td>
+                      <td><%= booking.check_in.strftime('%A, %B %e') %></td>
+                    <% else %>
+                      <td><i class="fas fa-check-ban"></i></td>
                       <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
                       <td><%= booking.check_out.strftime('%A, %B %e') %></td>
                       <td><%= booking.check_in.strftime('%A, %B %e') %></td>
