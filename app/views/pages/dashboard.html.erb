@@ -1,18 +1,20 @@
 <div class="background-image d-flex h-100 w-100 justify-content-center align-self-center">
   <div class="background-card w-75 p-5 my-5">
     <h1 class="dashboard-header">Welcome, <%= @user.first_name %></h1>
+
     <div class="side-navbar d-flex">
 
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <a class="nav-link active dashbard-nav" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Wand Listings</a>
         <a class="nav-link dashbard-nav" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Bookings</a>
-        <a class="nav-link dashbard-nav" id="v-pills-lending-tab" data-toggle="pill" href="#v-pills-lending" role="tab" aria-controls="v-pills-lending" aria-selected="false">Requests To Me</a>
+        <a class="nav-link dashbard-nav" id="v-pills-lending-tab" data-toggle="pill" href="#v-pills-lending" role="tab" aria-controls="v-pills-lending" aria-selected="false">Requests</a>
       </div>
 
       <div class="tab-content p-4" id="v-pills-tabContent">
+
         <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-          <% if !@wands.empty? %>
-            <ul>
+          <ul>
+            <% if !@wands.empty? %>
               <h3>Your current listings:</h3>
               <% @wands.each do |wand| %>
                 <li class="dashboard-listing">
@@ -21,13 +23,13 @@
                   &nbsp;&nbsp;<%= link_to wand_path(wand), method: :delete, remote: true, data: { confirm: 'Are you sure?'}  do %><i class="fas fa-trash-alt card-link"></i><% end %>
                 </li>
               <% end %>
-            </ul>
-          <% else %>
-            <ul>
+            <% else %>
               <li class="dashboard-listing"><h6>No listings yet</h6></li>
-            </ul>
-          <% end %>
-          <li class="dashboard-listing"><strong><%= link_to 'Post a New Wand Listing', new_wand_path, class:"dashboard-wand" %></strong></li>
+            <% end %>
+            <div class="button-dashboard">
+              <li class="dashboard-listing"><strong><%= link_to 'Post a New Wand Listing', new_wand_path, class:"dashboard-wand" %></strong></li>
+            </div>
+          </ul>
         </div>
 
         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
@@ -48,36 +50,53 @@
                     &nbsp;&nbsp;<%= link_to booking_path(booking), method: :delete, remote: true, data: { confirm: 'Are you sure?'}  do %><i class="fas fa-trash-alt card-link"></i><% end %>
                   </li>
                 <% end %>
-              </ul>
             <% else %>
                 <li class="dashboard-listing"><h6>No bookings yet</h6></li>
-              </ul>
             <% end %>
-            <li class="dashboard-listing"><strong><%= link_to 'Book a Wand', wands_path, class:"dashboard-wand" %></strong></li>
+            <div class="button-dashboard">
+              <li class="dashboard-listing"><strong><%= link_to 'Book a Wand', wands_path, class:"dashboard-wand" %></strong></li>
+            </div>
           </ul>
         </div>
 
-         <div class="tab-pane fade" id="v-pills-lending" role="tabpanel" aria-labelledby="v-pills-lending-tab">
-          <ul>
-            <% if !@received_bookings.empty? %>
-                <h3>Pending Rental Requests:</h3>
+        <div class="tab-pane fade" id="v-pills-lending" role="tabpanel" aria-labelledby="v-pills-lending-tab">
+          <% if !@received_bookings.empty? %>
+            <table cellspacing="12">
+              <tr class="table-label">
+                <th>Status</th>
+                <th>Name</th>
+                <th>Checkout</th>
+                <th>Return</th>
+              </tr>
+
+              <tbody>
                 <% @received_bookings.each do |booking| %>
-                    <li class="dashboard-listing">
+                  <tr>
                     <% if booking.status == 'pending' %>
-                        <i class="fas fa-hourglass-half"></i>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <% elsif booking.status == 'approved' %>
-                        <i class="fas fa-check-double"></i>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <% else %>
-                         <i class="fas fa-ban"></i>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <% end %>
-                        <strong><%= booking.wand.name %>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;from</strong>&nbsp;&nbsp;&nbsp;&nbsp;<%= booking.check_out %>&nbsp;&nbsp;&nbsp;&nbsp;<strong>to</strong>&nbsp;&nbsp;&nbsp;&nbsp;<%= booking.check_in %>
-                        <%= link_to 'Approve', dashboard_path(@booking, approved: true), method: :put, :class =>"btn btn-success" %>
-                        <%= link_to 'Reject', dashboard_path(@booking, approved: false), method: :put, :class=>"btn btn-danger mx-3" %>
-                          </li>
-                      <% end %>
-                <%end%>
-           </div>
+                      <td><i class="fas fa-hourglass-half"></i></td>
+                      <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
+                      <td><%= booking.check_out.strftime('%A, %B %e') %></td>
+                      <td><%= booking.check_in.strftime('%A, %B %e') %></td>
+                      <td><%= link_to approve_booking_path(booking), method: :post, remote: true do %><i class="fas fa-check dashboard-link"></i><% end %></td>
+                      <td><%= link_to decline_booking_path(booking), method: :post, remote: true do %><i class="fas fa-times dashboard-link"></i><% end %></td>
+                    <% else %>
+                      <td><i class="fas fa-check-double"></i></td>
+                      <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
+                      <td><%= booking.check_out.strftime('%A, %B %e') %></td>
+                      <td><%= booking.check_in.strftime('%A, %B %e') %></td>
+                    <% end %>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          <% else %>
+            <ul>
+              <li class="dashboard-listing"><h6>No requests yet</h6></li>
+            </ul>
+          <% end %>
         </div>
+
       </div>
-   </div>
+    </div>
+  </div>
 </div>
