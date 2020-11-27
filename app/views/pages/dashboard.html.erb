@@ -6,6 +6,7 @@
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <a class="nav-link active dashbard-nav" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Wand Listings</a>
         <a class="nav-link dashbard-nav" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Bookings</a>
+        <a class="nav-link dashbard-nav" id="v-pills-lending-tab" data-toggle="pill" href="#v-pills-lending" role="tab" aria-controls="v-pills-lending" aria-selected="false">Requests To Me</a>
       </div>
 
       <div class="tab-content p-4" id="v-pills-tabContent">
@@ -28,6 +29,7 @@
           <% end %>
           <li class="dashboard-listing"><strong><%= link_to 'Post a New Wand Listing', new_wand_path, class:"dashboard-wand" %></strong></li>
         </div>
+
         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
           <ul>
             <% if !@bookings.empty? %>
@@ -54,7 +56,28 @@
             <li class="dashboard-listing"><strong><%= link_to 'Book a Wand', wands_path, class:"dashboard-wand" %></strong></li>
           </ul>
         </div>
+
+         <div class="tab-pane fade" id="v-pills-lending" role="tabpanel" aria-labelledby="v-pills-lending-tab">
+          <ul>
+            <% if !@received_bookings.empty? %>
+                <h3>Pending Rental Requests:</h3>
+                <% @received_bookings.each do |booking| %>
+                    <li class="dashboard-listing">
+                    <% if booking.status == 'pending' %>
+                        <i class="fas fa-hourglass-half"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <% elsif booking.status == 'approved' %>
+                        <i class="fas fa-check-double"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <% else %>
+                         <i class="fas fa-ban"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <% end %>
+                        <strong><%= booking.wand.name %>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;from</strong>&nbsp;&nbsp;&nbsp;&nbsp;<%= booking.check_out %>&nbsp;&nbsp;&nbsp;&nbsp;<strong>to</strong>&nbsp;&nbsp;&nbsp;&nbsp;<%= booking.check_in %>
+                        <%= link_to 'Approve', dashboard_path(@booking, approved: true), method: :put, :class =>"btn btn-success" %>
+                        <%= link_to 'Reject', dashboard_path(@booking, approved: false), method: :put, :class=>"btn btn-danger mx-3" %>
+                          </li>
+                      <% end %>
+                <%end%>
+           </div>
+        </div>
       </div>
-    </div>
-  </div>
+   </div>
 </div>
