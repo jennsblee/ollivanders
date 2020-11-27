@@ -1,0 +1,20 @@
+.show_button {
+  margin-top: 10px;
+  background-color: #4a3f35;
+  border: none;
+  padding: 5px;
+  text-align: center;
+  font-size: 20px;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+  a {
+    text-decoration: none;
+    color: #dbcbbd;
+
+    &:hover {
+      color: white;
+    }
+  }
+}
+

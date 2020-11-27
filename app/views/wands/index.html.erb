@@ -1,3 +1,4 @@
+<div class="d-flex">
   <div class="background-img">
 
     <h1 class="header-style"><strong>Wand Listings</strong></h1>
@@ -5,7 +6,7 @@
 
     <div class="cards d-flex row justify-content-center mx-0 mb-5">
       <% @wands.each do |wand| %>
-        <div class="card d-flex align-self-center">
+        <div class="card index-card d-flex align-self-center">
           <div class="d-flex justify-content-center mt-5">
             <%= link_to wand_path(wand) do cl_image_tag wand.photos.first.key, crop: :fill, class: "card-img-top" end %>
           </div>
@@ -15,16 +16,11 @@
         </div>
       <% end %>
     </div>
-
-    <div>
-      <% if policy(Wand).new? %>
-        <%= link_to 'New Wand Listing', new_wand_path, class:"new-wand-link d-flex justify-content-center" %>
-      <% end %>
-    </div>
   </div>
 
   <div id="map"
-     style="width: 100%; height: 600px;"
+     style="width: 100%; height: 100vh;"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
+</div>

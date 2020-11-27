@@ -1,38 +1,113 @@
-<div class="container pad20">
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <% @wand.photos.each do |photo| %>
-      <div class="carousel-item active images">
-        <%= cl_image_tag(photo.key, class: "d-block w-50 images") %>
+<div class="show-background-color h-100 w-100 d-flex justify-content-center">
+  <div class="pt-4 h-100 w-75">
+
+    <h1 class= "text-center show-header">
+      <%= @wand.name %>
+      <% if current_user == @wand.user %>
+        &nbsp;
+        <%= link_to edit_wand_path(@wand) do %><i class="fas fa-pencil-alt"></i><% end %>
+        <%= link_to wand_path(@wand), method: :delete, remote: true, data: { confirm: 'Are you sure?'}  do %><i class="fas fa-trash-alt"></i><% end %>
+      <% end %>
+      </h1>
+
+    <div class="content p-3 mb-5">
+
+      <div class="text-carousel d-flex justify-content-between align-self-center">
+
+        <div id="carouselExampleControls" class="carousel slide w-75 mx-5" data-ride="carousel">
+          <div class="carousel-inner w-100">
+            <% @wand.photos.each_with_index do |photo, i| %>
+              <div class="carousel-item <%= 'active' if i == 0 %>">
+                <%= cl_image_tag(photo.key, class: "d-block w-50 images") %>
+              </div>
+            <% end %>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+
+        <div class="show-right mt-5 w-25 w-50">
+            <h4><%= @wand.description %></h4>
+
+            <h5><strong>Wood:</strong> &nbsp;  <%= @wand.wood %></h5>
+            <h5><strong>Core:</strong> &nbsp; <%= @wand.core %></h5>
+            <h5><strong>Size:</strong>  &nbsp;   <%= @wand.size %> cm</h5>
+            <h5><strong>Price:</strong> &nbsp;  $<%= @wand.price %></h5>
+
+
+<!--             <% if current_user == @wand.user %>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <%= link_to edit_wand_path(@wand) do %><i class="fas fa-pencil-alt"></i><% end %>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <%= link_to wand_path(@wand), method: :destroy, data: { confirm: 'Are you sure?'}  do %><i class="fas fa-trash-alt"></i><% end %>
+            <% end %> -->
+        </div>
+
+  <!--         <button type="button" class="show_button">
+              <% if policy(Booking).new? %>
+                <%= link_to 'Book this wand', new_wand_booking_path(@wand) %>
+              <% end %>
+          </button> -->
+      </div>
+
+
+     <% if current_user != @wand.user %>
+      <div class="booking-form m-5 p-3">
+        <h5><strong>Booking <%= @wand.name %></strong></h5>
+        <%= simple_form_for([@wand, @booking], remote: true) do |w| %>
+          <%#= f.error_notification %>
+          <%#= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+          <%#= w.input :check_in %>
+          <%#= w.input :check_out %>
+          <%= w.label :check_out, class: "booking-form-font" %>
+          <%= w.input :check_out, label: false, as: :string, required: true, input_html: {class: "datepicker"} %>
+          <%= w.label :check_out, class: "booking-form-font" %>
+          <%= w.input :check_in, label: false, as: :string, required: true, input_html: {class: "datepicker"}, class: "booking-form-font" %>
+          <%= w.submit  class: 'bookings-button', id: "sweet-alert-demo"%>
+        <% end %>
+      </div>
+      <% else %>
+      <div class="booking-form m-5 p-3">
+      <h5><strong>Your Wand has <%= pluralize @wand.bookings.size, "Booking" %></strong></h5>
+      <table cellspacing="12">
+        <% if @wand.bookings.size > 0 %>
+        <tr>
+          <th>Status</th>
+          <th>Name</th>
+          <th>Checkout</th>
+          <th>Return</th>
+          <th>Approve</th>
+          <th>Decline</th>
+          <th>Edit</th>
+        </tr>
+        <% end %>
+        <tbody>
+          <% @wand.bookings.each do |booking| %>
+            <tr>
+            <% if booking.status != 'declined' %>
+              <% if booking.status == 'pending' %>
+              <td><i class="fas fa-hourglass-half"></i></td>
+              <% else %>
+              <td><i class="fas fa-check-double"></i></td>
+              <% end %>
+              <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
+              <td><%= booking.check_out.strftime('%A, %B %e, %Y') %></td>
+              <td><%= booking.check_in.strftime('%A, %B %e, %Y') %></td>
+              <td><%= link_to approve_booking_path(booking), method: :post, remote: true do %><i class="fas fa-check"></i><% end %></td>
+              <td><%= link_to decline_booking_path(booking), method: :post, remote: true do %><i class="fas fa-times"></i><% end %></td>
+              <td><%= link_to edit_booking_path(booking) do %><i class="fas fa-pencil-alt"></i><% end %></td>
+            <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
       </div>
     <% end %>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-
-
-  <h1><%= @wand.name %></h1>
-  <h3><%= @wand.description %></h3>
-
-  <h5>wood: <%= @wand.wood %></h5>
-  <h5>core: <%= @wand.core %></h5>
-  <h5>size: <%= @wand.size %> cm</h5>
-  <h5>price: $ <%= @wand.price %></h5>
-
-
-  <% if current_user == @wand.user %>
-    <%= link_to edit_wand_path(@wand) do %><i class="fas fa-pencil-alt"></i><% end %>
-    <%= link_to 'delete', wand_path, method: :delete, data: { confirm: "Are you sure?" } %>
-  <% end %>
-
-  <% if policy(Booking).new? %>
-    <%= link_to 'book', new_wand_booking_path(@wand) %>
-  <% end %>
 </div>
