@@ -13,10 +13,11 @@ User.destroy_all
 Wand.destroy_all
 
 user_attributes = {
-  email: Faker::Internet.email,
+  email: 'albusdumbledore@hogwarts.com',
   password: 'password',
-  first_name: Faker::Movies::HarryPotter.character.split(' ').first,
-  last_name: Faker::Movies::HarryPotter.character.split(' ').last
+  first_name: 'Albus',
+  last_name: 'Dumbledore',
+  admin: true
 }
 user = User.create(user_attributes)
 
@@ -73,10 +74,10 @@ puts "Created #{user.first_name} #{user.last_name} with wand #{wand3.name}"
 
 
 user_attributes2 = {
-  email: Faker::Internet.email,
+  email: 'harrypotter@hogwarts.com',
   password: 'password',
-  first_name: Faker::Movies::HarryPotter.character.split(' ').first,
-  last_name: Faker::Movies::HarryPotter.character.split(' ').last
+  first_name: 'Harry',
+  last_name: 'Potter'
 }
 user2 = User.create(user_attributes2)
 

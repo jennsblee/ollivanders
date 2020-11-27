@@ -34,7 +34,8 @@ gem 'simple_form'
 gem 'faker'
 gem 'geocoder'
 gem 'pg_search', '~> 2.3.0'
-gem 'sweetify'
+gem 'sweetify', '~> 2.0'
+gem 'turbolinks_render'
 
 group :development, :test do
   gem 'pry-byebug'

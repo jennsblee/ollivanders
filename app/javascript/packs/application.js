@@ -26,6 +26,7 @@ require("channels")
 import "bootstrap";
 
 
+
 // Internal imports, e.g:
 import { initFlatpickr } from "../components/init_flatpickr";
 import { initSelect2 } from '../components/init_select2';
@@ -41,9 +42,11 @@ document.addEventListener('turbolinks:load', () => {
   initFlatpickr();
   $('.carousel').carousel();
   initAutocomplete();
-  // initSweetalert('#sweet-alert-demo', {
-  //     title: "A nice alert",
-  //     text: "This is a great alert, isn't it?",
-  //     icon: "success",
-  //     timer: 3000 });
+  initSweetalert('#sweet-alert-demo', {
+      title: "A nice alert",
+      text: "This is a great alert, isn't it?",
+      icon: "success"
+  });
 });
+
+import "controllers"

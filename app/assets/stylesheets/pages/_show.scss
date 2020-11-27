@@ -11,7 +11,7 @@
 .content {
   background-image: url('https://images.unsplash.com/photo-1603513492128-ba7bc9b3e143?ixlib=rb-1.2.1&auto=format&fit=crop&w=978&q=80');
   background-size: cover;
-  border-radius: 20px;
+  border-radius: 10px;
   box-shadow: 0px 0px 10px #2f2519;
 }
 
@@ -35,13 +35,14 @@
   margin-right: 30px;
 
   h4 {
-    // font-family: 'Cormorant', serif;
+    color: #2f2519;
     font-family: 'Tangerine', cursive;
     font-size: 35px;
     font-weight: bold;
     margin-bottom: 15px;
   }
   h5 {
+    color: #2f2519;
     margin: 0;
     font-family: 'Tangerine', cursive;
     font-size: 30px;
@@ -57,7 +58,7 @@
   background-size: cover;
   background-position: center;
   margin-bottom: 20px;
-  box-shadow: 0px 0px 2px #2f2519;
+  box-shadow: 0px 0px 5px #2f2519;
 
   h5 {
     margin-top: 0;
@@ -81,6 +82,10 @@
     font-size: 18px;
     letter-spacing: 1px;
   }
+}
+
+td {
+  padding-right: 35px;
 }
 
 // orangish: https://images.unsplash.com/photo-1600089091497-ea6812986100?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTE5fHxicm93biUyMHBhcGVyfGVufDB8fDB8&auto=format&fit=crop&w=700&q=60
