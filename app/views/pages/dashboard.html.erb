@@ -67,9 +67,6 @@
                 <th>Name</th>
                 <th>Checkout</th>
                 <th>Return</th>
-                <th>Approve</th>
-                <th> Decline</th>
-                <th> Edit</th>
               </tr>
 
               <tbody>
@@ -82,7 +79,6 @@
                       <td><%= booking.check_in.strftime('%A, %B %e') %></td>
                       <td><%= link_to approve_booking_path(booking), method: :post, remote: true do %><i class="fas fa-check dashboard-link"></i><% end %></td>
                       <td><%= link_to decline_booking_path(booking), method: :post, remote: true do %><i class="fas fa-times dashboard-link"></i><% end %></td>
-                      <td><%= link_to edit_booking_path(booking) do %><i class="fas fa-pencil-alt dashboard-link"></i><% end %></td>
                     <% else %>
                       <td><i class="fas fa-check-double"></i></td>
                       <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
