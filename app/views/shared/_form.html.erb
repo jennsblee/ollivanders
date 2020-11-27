@@ -1,9 +1,25 @@
-<%= simple_form_for (wand) do |w| %>
-  <%= w.input :name %>
-  <%= w.input :description %>
-  <%= w.input :wood %>
-  <%= w.input :core %>
-  <%= w.input :price %>
-  <%= w.input :size %>
-  <%= w.button :submit %>
+<%= simple_form_for(wand, remote: true) do |w| %>
+  <%= w.input :name, class: 'form-inputs'  %>
+  <%= w.input :description, class: 'form-inputs'  %>
+  <%= w.input :address, class: 'form-inputs'  %>
+  <div class= 'form-row'>
+    <div class= 'form-col-4'>
+      <%= w.input :wood, collection: Wand::WOOD_TYPES, input_html: { class: 'select2' }, class: 'form-inputs'  %>
+    </div>
+    <div class= 'form-col-4'>
+      <%= w.input :core, collection: Wand::CORE_TYPES, input_html: { class: 'select2' }, class: 'form-inputs'  %>
+    </div>
+  </div>
+  <div class= 'form-row'>
+    <div class= 'form-col-4'>
+      <%= w.input :price, class: 'form-inputs' %>
+    </div>
+    <div class= 'form-col-4'>
+      <%= w.input :size, class: 'form-inputs'  %>
+    </div>
+  </div>
+    <%= w.input :photos, as: :file, input_html: { multiple: true } %>
+  <div>
+  <div class='dropdown-divider'></div>
+    <%= w.submit class: 'form-partial-button', id: "sweet-alert-demo" %>
 <% end %>

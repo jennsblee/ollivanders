@@ -12,8 +12,12 @@
   </head>
 
   <body>
+    <%= render 'shared/navbar' %>
+    <div class="mt-5">
+    <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+    </div>
+    <%= render 'sweetify/alert' %>
   </body>
 </html>
