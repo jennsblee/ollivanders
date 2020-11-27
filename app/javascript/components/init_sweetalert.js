@@ -24,7 +24,7 @@ import swal from 'sweetalert';
 //   }
 // };
 
-export { initSweetalert };
+// export { initSweetalert };
 
 
 // title: "A nice alert",
