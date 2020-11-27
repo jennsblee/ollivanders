@@ -1,7 +1,7 @@
 import swal from 'sweetalert';
 
 
-const initSweetalert = swal();
+// const initSweetalert = swal();
 
 
 
