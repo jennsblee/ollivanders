@@ -42,10 +42,14 @@ class BookingsController < ApplicationController
 
   def approve
     @booking.update(status: 'approved')
+
+    redirect_to dashboard_path(:anchor => "v-pills-lending-tab"), notice: 'Request was successfully approved.'
   end
 
   def decline
     @booking.update(status: 'decline')
+
+    redirect_to dashboard_path(:anchor => "v-pills-lending-tab"), notice: 'Request was successfully denied.'
   end
 
   private
