@@ -16,7 +16,7 @@ class BookingsController < ApplicationController
     @booking.wand = Wand.find(params[:wand_id])
 
     if @booking.save
-      redirect_to dashboard_path(current_user), alert: 'Booking was successfully created.'
+      render json: { status: 'ok' }
     else
       render :new
     end
@@ -28,7 +28,7 @@ class BookingsController < ApplicationController
 
   def update
     if @booking.update(booking_params)
-      redirect_to dashboard_path, alert: 'Booking was successfully updated.'
+      render json: { status: 'ok' }
     else
       render :edit
     end
@@ -37,19 +37,19 @@ class BookingsController < ApplicationController
   def destroy
     @booking.destroy
 
-    redirect_to dashboard_path, notice: 'Booking was successfully deleted.'
+    redirect_to dashboard_path(:anchor => "v-pills-profile"), notice: 'Booking was successfully deleted.'
   end
 
   def approve
     @booking.update(status: 'approved')
-
-    redirect_to dashboard_path(:anchor => "v-pills-lending-tab"), notice: 'Request was successfully approved.'
+    
+    redirect_to dashboard_path(:anchor => "v-pills-lending"), notice: 'Request was successfully approved.'
   end
 
   def decline
     @booking.update(status: 'decline')
 
-    redirect_to dashboard_path(:anchor => "v-pills-lending-tab"), notice: 'Request was successfully denied.'
+    redirect_to dashboard_path(:anchor => "v-pills-lending"), notice: 'Request was declined.'
   end
 
   private

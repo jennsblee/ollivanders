@@ -1,7 +1,7 @@
-<div class="bookings-form-background-img">
+<div class="bookings-form-background-img" >
 <div class="container d-flex vh-100 justify-content-center align-items-center">
     <div class= 'col-sm-12 col-md-10 col-lg-8 col-xl-8 justify-content-center'>
-      <div class= 'booking-form p-5'>
+      <div class= 'booking-form p-5' data-controller='booking'>
     <h1>Editing booking for <%= @wand.name %> </h1>
       <%= simple_form_for(@booking) do |w| %>
         <%#= f.error_notification %>
@@ -10,7 +10,9 @@
         <%#= w.input :check_out %>
         <%= w.input :check_out, as: :string, required: true, input_html: {class: "datepicker"} %>
         <%= w.input :check_in, as: :string, required: true, input_html: {class: "datepicker"} %>
-        <%= w.submit  class: 'bookings-button', id: "sweet-alert-demo"%>
+        <button data-action='click->booking#trigger'>
+        <%= w.submit  class: 'bookings-button', id: "sweet-alert-edit"%>
+        </button>
       <% end %>
       </div>
     </div>

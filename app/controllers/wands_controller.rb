@@ -29,7 +29,11 @@ class WandsController < ApplicationController
     # authorize @wand
 
     if @wand.save
-      redirect_to wand_path(@wand), notice: 'Wand was successfully created.'
+      # respond_to do |format|
+      #   format.html { redirect_to wand_path(@wand), notice: 'Wand was successfully created.'}
+      #   format.json { }
+      # end
+      render json: { status: 'ok' }
     else
       render :new
     end
