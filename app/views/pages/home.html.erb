@@ -2,13 +2,16 @@
 <% content_for :transparent do %>
   transparent
 <% end %>
-<div class='home-background-img vh-100 d-flex align-items-center'>
-  <div class="container">
-    <%= image_tag("full_ollivanders_logo.png", width: 1000, height: 300, crop: :fill) %>
-    <div class='d-flex input-group-prepend'>
+<div class='home-background-img vw-100 vh-100 d-flex'>
+<!--   <div class="container"> -->
+    <div class="homepage-logo w-100">
+      <%= image_tag("ollivanders-seal.png", width: 500, height: 300, crop: :fill) %>
+    </div>
+
+    <div class='d-flex input-group-prepend w-100 flex-grow-1'>
       <%= render 'shared/search' %>
     </div>
-  </div>
+<!--   </div> -->
 </div>
 
 
