@@ -43,11 +43,6 @@ document.addEventListener('turbolinks:load', () => {
   initFlatpickr();
   $('.carousel').carousel();
   initAutocomplete();
-  initSweetalert('#sweet-alert-demo', {
-      title: "A nice alert",
-      text: "This is a great alert, isn't it?",
-      icon: "success"
-  });
 });
 
-import "controllers"
+import "controllers";

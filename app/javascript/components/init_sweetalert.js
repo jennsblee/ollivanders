@@ -1,7 +1,16 @@
 import swal from 'sweetalert';
 
 
-const initSweetalert = swal();
+const initSweetalert = (selector, options = {}, callback = () => {}) => {
+  const swalButton = document.querySelector(selector);
+  if (swalButton) { // protect other pages
+    swalButton.addEventListener('click', () => {
+      swal(options).then(callback); // <-- add the `.then(callback)`
+    });
+  }
+};
+
+export { initSweetalert };
 
 
 
@@ -14,17 +23,6 @@ const initSweetalert = swal();
 //   }
 // };
 
-
-// const initSweetalert = (selector) => {
-//   const swalButton = document.querySelector(selector);
-//   if (swalButton) { // protect other pages
-//     swalButton.addEventListener('click', () => {
-//       swal({}) // <-- add the `.then(callback)`
-//     });
-//   }
-// };
-
-export { initSweetalert };
 
 
 // title: "A nice alert",

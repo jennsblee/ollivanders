@@ -1,4 +1,5 @@
-<%= simple_form_for(wand, remote: true) do |w| %>
+<div data-controller="sweetalert">
+<%= simple_form_for(wand, 'data-target' => 'form') do |w| %>
   <%= w.input :name, class: 'form-inputs'  %>
   <%= w.input :description, class: 'form-inputs'  %>
   <%= w.input :address, class: 'form-inputs'  %>
@@ -21,5 +22,8 @@
     <%= w.input :photos, as: :file, input_html: { multiple: true } %>
   <div>
   <div class='dropdown-divider'></div>
-    <%= w.submit class: 'form-partial-button', id: "sweet-alert-demo" %>
+  <button data-action='click->sweetalert#trigger'>
+    <%= w.submit class: 'form-partial-button', id: "sweet-alert-create" %>
+  </button>
 <% end %>
+</div>
