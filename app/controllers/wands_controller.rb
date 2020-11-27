@@ -29,7 +29,6 @@ class WandsController < ApplicationController
     # authorize @wand
 
     if @wand.save
-      sweetalert_success('Wand was successfully created.', 'Successfully created')
       redirect_to wand_path(@wand), notice: 'Wand was successfully created.'
     else
       render :new
@@ -47,7 +46,6 @@ class WandsController < ApplicationController
     @wand.user = current_user
 
     if @wand.save
-      sweetalert_success('Wand was successfully updated.', 'Successfully created')
       redirect_to wand_path(@wand), notice: 'Wand was successfully updated.'
     else
       render :edit
