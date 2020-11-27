@@ -18,7 +18,7 @@ export default class extends Controller {
           title: "Success",
           text: "Your booking was requested to wand owner",
           icon: "success",}).then((value) => {
-            window.location.pathname = '/dashboard'
+            window.location.href = '/dashboard#v-pills-profile'
           });
       });
   };

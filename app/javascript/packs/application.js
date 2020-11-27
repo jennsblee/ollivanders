@@ -43,6 +43,8 @@ document.addEventListener('turbolinks:load', () => {
   initFlatpickr();
   $('.carousel').carousel();
   initAutocomplete();
+  const anchor = window.location.hash;
+$(`a[href="${anchor}"]`).tab('show');
 });
 
 import "controllers";

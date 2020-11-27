@@ -8,7 +8,7 @@ export default class extends Controller {
   }
 
   trigger = (event) => {
-    const form = document.querySelector('#edit_booking_`$params[:id]`');
+    const form = document.querySelector('.edit_booking');
     console.log(form);
     event.preventDefault();
     fetch(form.action, {method:'post', body: new FormData(form), headers: { accept: "application/json" }})
@@ -18,7 +18,7 @@ export default class extends Controller {
           title: "Success",
           text: "Your booking was successfully edited",
           icon: "success",}).then((value) => {
-            window.location.pathname = '/dashboard'
+             window.location.href = '/dashboard#v-pills-profile'
           });
       });
   };
