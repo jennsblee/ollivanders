@@ -84,8 +84,8 @@
                       <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
                       <td><%= booking.check_out.strftime('%A, %B %e') %></td>
                       <td><%= booking.check_in.strftime('%A, %B %e') %></td>
-                    <% else%>
-                      <td><i class="fas fa-ban"></i></td>
+                    <% else %>
+                      <td><i class="fas fa-check-ban"></i></td>
                       <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
                       <td><%= booking.check_out.strftime('%A, %B %e') %></td>
                       <td><%= booking.check_in.strftime('%A, %B %e') %></td>
