@@ -27,6 +27,7 @@ import "bootstrap";
 
 
 
+
 // Internal imports, e.g:
 import { initFlatpickr } from "../components/init_flatpickr";
 import { initSelect2 } from '../components/init_select2';
